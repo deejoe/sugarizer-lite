@@ -1,5 +1,9 @@
 ![](images/sugarizer_logo_with_text.svg)
 
+NOTE WELL: This is from a shallow clone of mainline [Sugarizer](https://github.com/llaske/sugarizer) with a couple of large activities (Abecedarium and Exerciser) removed. 
+
+This is intended to allow students to explore Sugarizer development with less initial use of bandwidth and disk space.
+
 # What is Sugarizer ?
 
 Sugarizer is a free/libre learning platform. The Sugarizer UI use ergonomic principles from The [Sugar platform](https://sugarlabs.org/), developed for the One Laptop per Child project and used every day by more than 2 million children around the world.
