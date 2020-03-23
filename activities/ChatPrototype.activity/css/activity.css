@@ -1,0 +1,231 @@
+#main-toolbar #activity-button {
+background-image:url(../activity/activity-icon.svg);
+}
+
+#main-toolbar #network-button {
+background-image:url(../lib/sugar-web/graphics/icons/actions/zoom-home.svg);
+}
+
+#main-toolbar #image-upload {
+background-image:url(../icons/image-upload.svg);
+visibility: hidden;
+}
+
+
+.network-text {
+font-size: 12pt;
+}
+
+#private-button {
+background-image:url(../lib/sugar-web/graphics/icons/actions/zoom-home.svg);
+width: 47px;
+height: 47px;
+margin: 4px 2px;
+color: white;
+color: transparent;
+background-color: transparent;
+background-position: center;
+background-repeat: no-repeat;
+background-size: contain;
+border: 0;
+border-radius: 5.5px;
+}
+
+#shared-button {
+background-image:url(../lib/sugar-web/graphics/icons/actions/zoom-neighborhood.svg);
+width: 47px;
+height: 47px;
+margin: 4px 2px;
+color: white;
+color: transparent;
+background-color: transparent;
+background-position: center;
+background-repeat: no-repeat;
+background-size: contain;
+border: 0;
+border-radius: 5.5px;
+}
+
+*,:before,:after {
+-moz-box-sizing:border-box;
+-webkit-box-sizing:border-box;
+box-sizing:border-box;
+}
+
+html {
+font-family:Helvetica, Arial, sans-serif;
+font-size:100%;
+background:#333;
+}
+
+#page-wrapper {
+width:650px;
+background:#FFF;
+border-top:5px solid #69c773;
+box-shadow:0 2px 10px rgba(0,0,0,0.8);
+margin:1em auto;
+padding:1em;
+}
+
+h1 {
+margin-top:0;
+}
+
+#status {
+font-size:.9rem;
+margin-bottom:1rem;
+}
+
+.open {
+color:green;
+}
+
+.closed {
+color:red;
+}
+
+.error {
+color:red;
+}
+
+ul {
+list-style:none;
+font-size:.95rem;
+margin:0;
+padding:0;
+}
+
+ul li {
+border-bottom:1px solid #EEE;
+padding:.5rem .75rem;
+}
+
+ul li:first-child {
+border-top:1px solid #EEE;
+}
+
+ul li span {
+display:inline-block;
+width:90px;
+font-weight:700;
+color:black;
+font-size:.9rem;
+text-transform:uppercase;
+letter-spacing:1px;
+}
+
+.sent {
+background-color:#F7F7F7;
+}
+
+#message-form {
+margin-top:1.5rem;
+}
+
+#text-container textarea {
+  height:41px;
+}
+textarea {
+  position: relative;
+  width:88%;
+  margin-left: 1%;
+  font-size:1rem;
+  border:1px solid #D9D9D9;
+  border-radius:3px;
+  box-shadow:inset 0 1px 1px rgba(0,0,0,0.1);
+  padding:3px;
+}
+
+/** Emoji Buttons **/
+#smiley-button {
+  position: absolute;
+  background-repeat: no-repeat;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+
+#sad-button {
+  position: absolute;
+  margin-top:8px;
+  margin-left: 55px;
+}
+
+#others-button {
+  position: absolute;
+  margin-top:8px;
+  margin-left: 100px;
+}
+
+/** Dropdown for emoji button **/
+select {
+    padding:3px;
+    margin: 0;
+    background: transparent;
+    background-repeat: no-repeat;
+    color:#888;
+    border: none !important;;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+}
+
+
+button {
+display:inline-block;
+border-radius:3px;
+border:none;
+font-size:.9rem;
+color:#FFF;
+text-align:center;
+background:#BABABA;
+border-bottom:1px solid #999;
+margin:0 .25rem;
+padding:.6rem 1em;
+}
+
+button[type="submit"] {
+background:#86b32d;
+border-bottom:1px solid #5d7d1f;
+}
+
+button:hover {
+opacity:0.75;
+cursor:pointer;
+}
+
+#content {
+margin: 1%;
+background:white;
+border-radius:5px;
+overflow-y: auto;
+border:1px solid #CCC;
+height:80%;
+padding:1%;
+}
+
+/** Media Access Query**/
+
+@media only screen and (min-width: 360px){
+  textarea {
+    position: static;
+    width:60%;
+  }
+  #smiley-button, #sad-button, #others-button{
+      margin-top: 0px;
+      margin-bottom: 0px;
+  }
+}
+
+@media only screen and (min-width: 1366px){
+    textarea {
+      position: relative;
+      width:88%;
+      height: 41px;
+    }
+   #smiley-button, #sad-button, #others-button{
+      margin-top: 8px;
+  }
+}

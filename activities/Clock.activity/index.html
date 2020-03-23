@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Clock Activity</title>
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, viewport-fit=cover"/>
+<link rel="prefetch" type="application/l10n" href="locale.ini" />
+<link rel="stylesheet" media="not screen and (device-width: 1200px) and (device-height: 900px)"
+	  href="lib/sugar-web/graphics/css/sugar-96dpi.css">
+<link rel="stylesheet" media="screen and (device-width: 1200px) and (device-height: 900px)"
+	  href="lib/sugar-web/graphics/css/sugar-200dpi.css">
+<link rel="stylesheet" href="css/activity.css">
+<script data-main="js/loader" src="lib/require.js"></script>
+</head>
+
+<body>
+  <div id="main-toolbar" class="toolbar">
+    <button class="toolbutton" id="activity-button" title="My Activity"></button>
+    <button class="toolbutton" id="simple-clock-button" title="Simple Clock"></button>
+    <button class="toolbutton" id="nice-clock-button" title="Nice Clock"></button>
+    <hr/>
+    <button class="toolbutton" id="write-time-button" title="Write time"></button>
+    <button class="toolbutton" id="write-date-button" title="Write date"></button>
+    <button class="toolbutton pull-right" id="stop-button" title="Stop"></button>
+  </div>
+  <div id="canvas">
+    <div id="clock-container">
+      <canvas id="clock-canvas"></canvas>
+    </div>
+    <div id="text-container">
+      <p style="display: none" id="text-time">What Time Is It?</p>
+      <p style="display: none" id="text-date">.</p>
+    </div>
+  </div>
+</body>
+</html>
