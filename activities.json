@@ -1,5 +1,4 @@
 [
-	{"id": "org.sugarlabs.Exerciser", "name": "Exerciser", "version": 1, "directory": "activities/Exerciser.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.sugarlabs.GearsActivity", "name": "Gears", "version": 6, "directory": "activities/Gears.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.sugarlabs.MazeWebActivity", "name": "Maze Web", "version": 2, "directory": "activities/MazeWeb.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.olpcfrance.PaintActivity", "name": "Paint", "version": 1, "directory": "activities/Paint.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
@@ -12,7 +11,6 @@
 	{"id": "org.sugarlabs.SpeakActivity", "name": "Speak", "favorite": true, "version": 1, "directory": "activities/Speak.activity", "icon": "activity/activity-icon.svg", "activityId": null},
 	{"id": "org.sugarlabs.moon", "name": "Moon", "version": 1, "directory": "activities/Moon.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.olpcfrance.RecordActivity", "name": "Record", "version": 1, "directory": "activities/Record.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
-	{"id": "org.olpcfrance.Abecedarium", "name": "Abecedarium", "version": 5, "directory": "activities/Abecedarium.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.olpcfrance.videoviewer", "name": "Video Viewer", "version": 1, "directory": "activities/VideoViewer.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.olpcfrance.FoodChain", "name": "FoodChain", "version": 4, "directory": "activities/FoodChain.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.olpc-france.labyrinthjs", "name": "Labyrinth JS", "version": 1, "directory": "activities/LabyrinthJS.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
