@@ -1,0 +1,6 @@
+[Activity]
+name = Dodge the Creeps
+activity_version = 1
+bundle_id = dev.benaaron.DodgeTheCreeps
+exec = sugar-activity-web
+icon = activity-icon

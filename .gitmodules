@@ -1,0 +1,3 @@
+[submodule "activities/DodgeTheCreeps.activity/game"]
+	path = activities/DodgeTheCreeps.activity/game
+	url = https://github.com/zethra/dodge-the-creeps
