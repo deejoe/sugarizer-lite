@@ -17,3 +17,33 @@
 #main-toolbar #percent-button {
 	background-image: url(../icons/percent.svg);
 }
+
+.fraction-text {
+	width: 40px;
+	height: 25px;
+	font-size: medium;
+	margin: 2px 2px;
+}
+
+.palette-button {
+	width: 47px;
+	height: 47px;
+	margin: 2px 2px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	border-radius: 5.5px;
+	background-color: transparent;
+}
+
+#add-fraction-button {
+	background-image: url(../icons/add.svg);
+}
+
+#choose-ball-button {
+	background-image: url(../icons/soccerball.svg);
+}
+
+#choose-bg-button {
+	background-image: url(../icons/insert-picture.svg);
+}
