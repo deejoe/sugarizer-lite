@@ -1,3 +1,19 @@
 #main-toolbar #activity-button {
   background-image: url(../activity/activity-icon.svg);
 }
+
+#main-toolbar #settings-button {
+	background-image: url(../icons/settings.svg);
+}
+
+#main-toolbar #fraction-button {
+	background-image: url(../icons/fraction.svg);
+}
+
+#main-toolbar #sector-button {
+	background-image: url(../icons/sector.svg);
+}
+
+#main-toolbar #percent-button {
+	background-image: url(../icons/percent.svg);
+}
