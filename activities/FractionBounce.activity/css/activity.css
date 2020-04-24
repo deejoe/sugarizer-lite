@@ -22,7 +22,7 @@
 	width: 40px;
 	height: 25px;
 	font-size: medium;
-	margin: 2px 2px;
+	margin: 6px 6px;
 }
 
 .palette-button {
@@ -34,6 +34,10 @@
 	background-size: contain;
 	border-radius: 5.5px;
 	background-color: transparent;
+}
+
+#palette-div {
+	width: 800px;
 }
 
 #add-fraction-button {

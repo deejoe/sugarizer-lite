@@ -8,6 +8,7 @@ define(["sugar-web/graphics/palette"], function (palette) {
 		palette.Palette.call(this, invoker, primaryText);
 
 		var div = document.createElement('div');
+		div.setAttribute('id','palette-div');
 
 		var fractionupper = document.createElement('input');
 		fractionupper.className = 'fraction-text';
@@ -38,13 +39,9 @@ define(["sugar-web/graphics/palette"], function (palette) {
 		choosebg.setAttribute('id','choose-bg-button');
 		choosebg.setAttribute('title','Choose background');
 		choosebg.onclick = function() {}
-
-		this.setSize = function(state) {
-			that.popDown();
-		}
 		
 		div.appendChild(fractionupper);
-		div.innerHTML = div.innerHTML + '/';
+		div.innerHTML = div.innerHTML + ' / ';
 		div.style = 'font-size: 28px'
 		div.appendChild(fractionlower);
 		div.appendChild(addfraction);
@@ -52,7 +49,6 @@ define(["sugar-web/graphics/palette"], function (palette) {
 		div.appendChild(choosebg);
 
 		this.setContent([div]);
-		var that = this;
     };
 
     var addEventListener = function (type, listener, useCapture) {
