@@ -1,0 +1,53 @@
+#main-toolbar #activity-button {
+  background-image: url(../activity/activity-icon.svg);
+}
+
+#main-toolbar #settings-button {
+	background-image: url(../icons/settings.svg);
+}
+
+#main-toolbar #fraction-button {
+	background-image: url(../icons/fraction.svg);
+}
+
+#main-toolbar #sector-button {
+	background-image: url(../icons/sector.svg);
+}
+
+#main-toolbar #percent-button {
+	background-image: url(../icons/percent.svg);
+}
+
+.fraction-text {
+	width: 40px;
+	height: 25px;
+	font-size: medium;
+	margin: 6px 6px;
+}
+
+.palette-button {
+	width: 47px;
+	height: 47px;
+	margin: 2px 2px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	border-radius: 5.5px;
+	background-color: transparent;
+}
+
+#palette-div {
+	width: 800px;
+}
+
+#add-fraction-button {
+	background-image: url(../icons/add.svg);
+}
+
+#choose-ball-button {
+	background-image: url(../icons/soccerball.svg);
+}
+
+#choose-bg-button {
+	background-image: url(../icons/insert-picture.svg);
+}
