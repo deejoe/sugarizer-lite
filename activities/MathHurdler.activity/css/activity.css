@@ -20,7 +20,7 @@ body { font-family: "Courier New", monospace; }
 
 #title-text { font-size: 7em; font-weight: normal; margin-top: 0;}
 
-#title-button {
+#canvas button {
     margin: 0 auto;
     display: block;
     border-radius: 0;
@@ -30,8 +30,12 @@ body { font-family: "Courier New", monospace; }
     color: black;
     background-color: white;
     border: 2px solid black;
+    transition: .3s;
     
 }
+
+#canvas button:hover { background-color: lightgray; }
+#canvas button:active { background-color: gray; }
 
 #title-uni { 
     margin: 0 auto;
@@ -51,4 +55,80 @@ body { font-family: "Courier New", monospace; }
     0% { transform: rotateZ(-20deg); }
     50% { transform: rotateZ(20deg); }
     100% { transform: rotateZ(-20deg); }
+}
+
+
+
+/* MARK - Game */
+
+/* ID Selectors */
+#game {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        #7EC1EE 0%,
+        #7EC1EE 65%,
+        #00FF01 65%, 
+        #00FF01 75%, 
+        #7E6000 75%,
+        #7E6000 100%
+    );
+}
+
+#score-container {
+    position: absolute;
+    left: calc(100% - 200px);
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #FED401;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    background-image: radial-gradient(#FFFDE6, #FED401);
+}
+#score-container p { margin: 0; font-size: 1.5em;}
+
+#problem-container {
+    position: absolute;
+    left: calc(50% - 139.5px);
+    top: 20%;
+    border: 3px solid black;
+    background-color: white;
+    width: 275px;
+    height: 100px;
+}
+#problem-container p { margin: 0; padding-left: 10px; font-size: 2.5em;}
+#problem { padding-left: 10px; font-size: 4em; font-weight: bold; }
+
+#uni {
+    position: absolute;
+    top: calc(70% - 130px);
+    width: 200px;
+    height: auto;
+    animation: spinUni 3s infinite;
+}
+
+#hurdle {
+    position: absolute;
+    top: calc(70% - 130px);
+    left: 70%;
+    height: 200px;
+    width: auto;
+}
+
+#answer-container {
+    position: absolute;
+    top: calc(87.5% - 75px);
+    left: calc(50% - 200px);
+}
+
+/* Class Selectors */
+.choice {
+    display: inline-block !important;   /* Everything in this class is listed as important */
+    font-size: 2.5em !important;        /* because it needs to overwrite default button styles */
+    width: 200px !important;            /* as well as previously defined button styles */
+    height: 75px !important;
 }
