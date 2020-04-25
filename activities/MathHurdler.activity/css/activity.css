@@ -1,3 +1,54 @@
 #main-toolbar #activity-button {
   background-image: url(../activity/activity-icon.svg);
 }
+
+body { font-family: "Courier New", monospace; }
+
+/* MARK - Title Screen */
+
+/* ID Selectors */
+#title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: #92fdbc;
+    animation: titleBgAnim 5s infinite;
+}
+
+#title-text { font-size: 7em; font-weight: normal; margin-top: 0;}
+
+#title-button {
+    margin: 0 auto;
+    display: block;
+    border-radius: 0;
+    padding: .75em;
+    font-family: "Courier New", monospace;
+    font-size: 5em;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    
+}
+
+#title-uni { 
+    margin: 0 auto;
+    width: 200px;
+    height: auto;
+    animation: spinUni 3s infinite;
+}
+
+/* Keyframe Animations */
+@keyframes titleBgAnim {
+    0% { background-color: #92fdbc; }
+    50% { background-color: #fe91c3; }
+    100% { background-color: #92fdbc; }
+}
+
+@keyframes spinUni {
+    0% { transform: rotateZ(-20deg); }
+    50% { transform: rotateZ(20deg); }
+    100% { transform: rotateZ(-20deg); }
+}
