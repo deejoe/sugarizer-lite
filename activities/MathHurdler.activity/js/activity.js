@@ -3,9 +3,43 @@ define(["sugar-web/activity/activity"], function (activity) {
     {
         return [Math.floor(Math.random() * 3), 2 + Math.floor(Math.random() * 3)];
     }
+    function addFractions(frac1, frac2)
+    {
+        return [frac1[0] * frac2[1] + frac1[1] * frac2[0], frac1[1] * frac2[1]];
+    }
+    function reduceFrac(frac) {
+        let num = frac[0];
+        let den = frac[1];
+        // Check all primes less than 25
+        [2,3,5,7,11,13,17,19,23].forEach(p => {
+            while(true) {
+                if(num%p === 0 && den%p === 0) {
+                    // Divisible by number
+                    num/=p;
+                    den/=p;
+                } else {
+                    // Not divisible, stop checking this one
+                    break;
+                }
+            }
+        });
+        return [num, den];
+    }
     function getFractionDisplay(frac)
     {
-        return frac[0] + "/" + frac[1];
+        if(frac[0] === 0) {
+            return "0";
+        }
+        frac = reduceFrac(frac);
+        if(frac[0] < frac[1]) {
+            return frac[0] + "/" + frac[1];
+        }
+        // Check for perfect multiple
+        if(frac[0] % frac[1] === 0) {
+            return frac[0] / frac[1];
+        }
+        // Convert to improper fraction
+        return (Math.floor(frac[0]/frac[1]) + " " + (frac[0] % frac[1]) + "/" + frac[1]);
     }
     // Returns a problem of the form
     // {problem: "<problem>", answers: ["answer1", "answer2", "answer3", "answer4"], correctAnswer: <0-3>}
@@ -13,19 +47,26 @@ define(["sugar-web/activity/activity"], function (activity) {
     {
         const frac1 = getFraction();
         const frac2 = getFraction();
-        const correctFrac = [frac1[0] * frac2[1] + frac1[1] * frac2[0], frac1[1] * frac2[1]];
+        const correctFrac = addFractions(frac1, frac2);
         const problem = getFractionDisplay(frac1) + " + " + getFractionDisplay(frac2);
         // Generate four incorrect answers
         const answers = [
-            getFractionDisplay(getFraction()),
-            getFractionDisplay(getFraction()),
-            getFractionDisplay(getFraction()),
-            getFractionDisplay(getFraction()),
+            getFractionDisplay(addFractions(getFraction(), getFraction())),
+            getFractionDisplay(addFractions(getFraction(), getFraction())),
+            getFractionDisplay(addFractions(getFraction(), getFraction())),
+            getFractionDisplay(addFractions(getFraction(), getFraction())),
         ];
         const correctAnswerText = getFractionDisplay(correctFrac);
         // Replace a random one with the correct answer
         const correctAnswer = Math.floor(Math.random()*4);
         answers[correctAnswer] = correctAnswerText;
+        // Check if any in answers are equal
+        for(let i=1;i<4;i++) {
+            if(answers.indexOf(answers[i]) !== i) {
+                // This answer has occurred before in the list, bail on this problem and issue a new one
+                return getProblem();
+            }
+        }
         return {
             problem,
             answers,
@@ -165,20 +206,17 @@ define(["sugar-web/activity/activity"], function (activity) {
             }
         };
         stateHandlers[states.Hurdling] = (deltaTime) => {
-            if(unicornPosition > 1800) {
+            if(unicornPosition > 1700) {
                 problemNum++;
                 scoreNum.innerText = problemNum;
                 hurdleNum.innerText = (problemNum+1);
                 state = states.Starting;
-            } else if(unicornPosition > 1700) {
-                unicornPosition += deltaTime/2;
-                unicornHeight = 0;
             } else if(unicornPosition > 1450) {
-                unicornPosition += deltaTime/10;
-                unicornHeight -= deltaTime/10;
+                unicornPosition += deltaTime/5;
+                unicornHeight -= deltaTime/5;
             } else {
-                unicornPosition += deltaTime/10;
-                unicornHeight += deltaTime/10;
+                unicornPosition += deltaTime/5;
+                unicornHeight += deltaTime/5;
             }
         };
         stateHandlers[states.Crashing] = (deltaTime) => {
