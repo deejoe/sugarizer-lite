@@ -1,58 +1,77 @@
-define(["sugar-web/activity/activity"], function (activity) {
+// Initialize the activity.
 
-	// Manipulate the DOM only when it is ready.
-	requirejs(['domReady!', "activity/settingspalette"], function (doc, settingspalette) {
+define(["sugar-web/activity/activity"], function(activity) {
+  // Manipulate the DOM only when it is ready.
+  requirejs(
+    ["domReady!", "activity/settingspalette", "activity/game", "activity/ball"],
+    function(doc, settingspalette) {
+      // Link presence palette
+      let palette = new settingspalette.SettingsPalette(
+        document.getElementById("settings-button"),
+        undefined
+      );
 
-		// Link presence palette
-		var palette = new settingspalette.SettingsPalette(document.getElementById("settings-button"), undefined);
+      let canvas = document.getElementById("actualcanvas");
+      canvas.height = canvas.parentElement.clientHeight;
+      canvas.width = canvas.parentElement.clientWidth;
+      let ball = new Ball(100, 100, -1, canvas.getContext("2d"), 50);
+      let game = new Game(
+        canvas.getContext("2d"),
+        canvas.width,
+        canvas.height,
+        ball
+      );
+      window.addEventListener(
+        "keydown",
+        e => {
+          switch (e.keyCode) {
+            case 37:
+              ball.x -= 10;
+              break;
+            case 39:
+              ball.x += 10;
+              break;
+            default:
+              break;
+          }
+        },
+        false
+      );
+      activity.setup();
 
-		// This will have to be moved
-		var canvas = document.getElementById("actualcanvas");
-		canvas.height = canvas.parentElement.clientHeight;
-		canvas.width = canvas.parentElement.clientWidth;
-		var rampHeight = 50;
-		var rampColor = "#050505";
-		var gridColor = "#D0D0D0";
-		var lineWidth = 2;
+      let fps = 60,
+        //Get the start time
+        start = Date.now(),
+        //Set the frame duration in milliseconds
+        frameDuration = 1000 / fps,
+        //Initialize the lag offset
+        lag = 0;
 
-		function displayRamp(n) {
-			var ctx = canvas.getContext("2d");
-			var width = canvas.clientWidth;
-			var height = canvas.clientHeight;
-			
-			// Temporary (for better contrast)
-			ctx.fillStyle = "#6FCA1E"
-			ctx.fillRect(0, 0, width - 1, height - 1);
-			
-			// Display triangle
-			ctx.fillStyle = rampColor;
-			ctx.beginPath();
-			ctx.moveTo(0, height -1 );
-			ctx.lineTo(width - 1, height - 1);
-			ctx.lineTo(width - 1, height - 1 - rampHeight);
-			ctx.closePath();
-			ctx.fill();
+      //Start the game loop
+      gameLoop();
 
-			// Display grid
-			ctx.strokeStyle = gridColor;
-			ctx.lineWidth = lineWidth;
-			for(var i = 0; i < n; i++) {
-				ctx.beginPath();
-				ctx.moveTo(i * (width / n), height - 1);
-				ctx.lineTo((i + 1)*(width / n), height - 1);
-				ctx.lineTo((i + 1)*(width / n), height - 1 - (i + 1) * rampHeight / n);
-				if(i > 0) {
-					ctx.lineTo(i * (width / n), height - 1 - i * rampHeight / n);
-				}
-				ctx.closePath();
-				ctx.stroke();
-			}
-		}
-		displayRamp(10);
+      function gameLoop() {
+        requestAnimationFrame(gameLoop);
 
-		// Initialize the activity.
-		activity.setup();
+        //Calcuate the time that has elapsed since the last frame
+        let current = Date.now(),
+          elapsed = current - start;
+        start = current;
+        //Add the elapsed time to the lag counter
+        lag += elapsed;
 
-	});
-
+        //Update the frame if the lag counter is greater than or
+        //equal to the frame duration
+        while (lag >= frameDuration) {
+          //Update the logic here
+          game.update();
+          //Reduce the lag counter by the frame duration
+          lag -= frameDuration;
+        }
+        // Calculate the lag offset and use it to render sprites and shapes
+        var lagOffset = lag / frameDuration;
+        game.render(lagOffset);
+      }
+    }
+  );
 });
