@@ -1,18 +1,36 @@
 define(["sugar-web/activity/activity"], function (activity) {
+    function getFraction()
+    {
+        return [Math.floor(Math.random() * 3), 2 + Math.floor(Math.random() * 3)];
+    }
+    function getFractionDisplay(frac)
+    {
+        return frac[0] + "/" + frac[1];
+    }
     // Returns a problem of the form
     // {problem: "<problem>", answers: ["answer1", "answer2", "answer3", "answer4"], correctAnswer: <0-3>}
     function getProblem()
     {
+        const frac1 = getFraction();
+        const frac2 = getFraction();
+        const correctFrac = [frac1[0] * frac2[1] + frac1[1] * frac2[0], frac1[1] * frac2[1]];
+        const problem = getFractionDisplay(frac1) + " + " + getFractionDisplay(frac2);
+        // Generate four incorrect answers
+        const answers = [
+            getFractionDisplay(getFraction()),
+            getFractionDisplay(getFraction()),
+            getFractionDisplay(getFraction()),
+            getFractionDisplay(getFraction()),
+        ];
+        const correctAnswerText = getFractionDisplay(correctFrac);
+        // Replace a random one with the correct answer
+        const correctAnswer = Math.floor(Math.random()*4);
+        answers[correctAnswer] = correctAnswerText;
         return {
-            problem: "problem",
-            answers: [
-                "wrong1",
-                "right2",
-                "wrong3",
-                "wrong4"
-            ],
-            correctAnswer: 1
-        }
+            problem,
+            answers,
+            correctAnswer
+        };
     }
 
     const states = {
