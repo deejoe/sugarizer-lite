@@ -132,3 +132,7 @@ body { font-family: "Courier New", monospace; }
     width: 200px !important;            /* as well as previously defined button styles */
     height: 75px !important;
 }
+
+#game-over {
+    margin: 0px;
+}
