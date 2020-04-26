@@ -147,32 +147,32 @@ define(["sugar-web/activity/activity"], function (activity) {
                 // Highlight incorrectly picked answer
                 choices[clicked].style.backgroundColor = "red";
             }
-            if(unicornPosition > window.screen.width * 0.625) {
+            if(unicornPosition > window.innerWidth * 0.625) {
                 state = states.Crashing;
             }
         };
         stateHandlers[states.CorrectPending] = (deltaTime) => {
             unicornPosition += deltaTime/2;
-            if(unicornPosition > window.screen.width * 0.625) {
+            if(unicornPosition > window.innerWidth * 0.625) {
                 state = states.Hurdling;
             }
         };
         stateHandlers[states.IncorrectPending] = (deltaTime) => {
             unicornPosition += deltaTime/2;
-            if(unicornPosition > window.screen.width * 0.625) {
+            if(unicornPosition > window.innerWidth * 0.625) {
                 state = states.Crashing;
             }
         };
         stateHandlers[states.Hurdling] = (deltaTime) => {
-            if(unicornPosition > window.screen.width * 0.9375) {
+            if(unicornPosition > window.innerWidth * 0.9375) {
                 problemNum++;
                 scoreNum.innerText = problemNum;
                 hurdleNum.innerText = (problemNum+1);
                 state = states.Starting;
-            } else if(unicornPosition > window.screen.width * 0.8854166) {
+            } else if(unicornPosition > window.innerWidth * 0.8854166) {
                 unicornPosition += deltaTime/4;
                 unicornHeight = 0;
-            } else if(unicornPosition > window.screen.width * 0.75520833) {
+            } else if(unicornPosition > window.innerWidth * 0.75520833) {
                 unicornPosition += deltaTime/4;
                 unicornHeight -= deltaTime/4;
             } else {
