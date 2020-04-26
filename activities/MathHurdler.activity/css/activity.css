@@ -3,6 +3,7 @@
 }
 
 body { font-family: "Courier New", monospace; }
+#canvas { overflow-x: hidden; }
 
 /* MARK - Title Screen */
 
@@ -63,6 +64,7 @@ body { font-family: "Courier New", monospace; }
 
 /* ID Selectors */
 #game {
+    overflow-x: hidden;
     display: none;
     width: 100%;
     height: 100%;
@@ -93,17 +95,18 @@ body { font-family: "Courier New", monospace; }
 
 #problem-container {
     position: absolute;
-    left: calc(50% - 139.5px);
+    left: calc(50% - 167px);
     top: 20%;
     border: 3px solid black;
     background-color: white;
-    width: 275px;
+    width: 330px;
     height: 100px;
 }
 #problem-container p { margin: 0; padding-left: 10px; font-size: 2.5em;}
 #problem { padding-left: 10px; font-size: 4em; font-weight: bold; }
 
 #uni {
+    z-index: 100;
     position: absolute;
     top: calc(70% - 130px);
     width: 200px;
@@ -134,5 +137,16 @@ body { font-family: "Courier New", monospace; }
 }
 
 #game-over {
+    position: relative;
+    z-index: 10000;
     margin: 0px;
+    font-size: 10em;
+    text-align: center;
+    padding-top: 18%;
+}
+
+/* Unicorn falling over animation */
+@keyframes crashAnim {
+    0% { transform: rotateZ(0deg); }
+    100% { transform: rotateZ(-180deg); }
 }

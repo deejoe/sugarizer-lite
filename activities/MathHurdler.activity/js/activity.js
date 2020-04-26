@@ -96,7 +96,6 @@ define(["sugar-web/activity/activity"], function (activity) {
         ];
         const unicorn = document.querySelector("#uni");                 // move this using .style.left toward the hurdle, based speed on a timer
         const gameOver = document.querySelector("#game-over");          // set .hidden = false when unicorn collides with hurdle/after a set amount of time
-        
 
         // Clicked - lists which button was clicked in the previous frame (if any)
         let clicked = null;
@@ -148,41 +147,44 @@ define(["sugar-web/activity/activity"], function (activity) {
                 // Highlight incorrectly picked answer
                 choices[clicked].style.backgroundColor = "red";
             }
-            if(unicornPosition > 1200) {
+            if(unicornPosition > window.screen.width * 0.625) {
                 state = states.Crashing;
             }
         };
         stateHandlers[states.CorrectPending] = (deltaTime) => {
             unicornPosition += deltaTime/2;
-            if(unicornPosition > 1200) {
+            if(unicornPosition > window.screen.width * 0.625) {
                 state = states.Hurdling;
             }
         };
         stateHandlers[states.IncorrectPending] = (deltaTime) => {
             unicornPosition += deltaTime/2;
-            if(unicornPosition > 1200) {
+            if(unicornPosition > window.screen.width * 0.625) {
                 state = states.Crashing;
             }
         };
         stateHandlers[states.Hurdling] = (deltaTime) => {
-            if(unicornPosition > 1800) {
+            if(unicornPosition > window.screen.width * 0.9375) {
                 problemNum++;
                 scoreNum.innerText = problemNum;
                 hurdleNum.innerText = (problemNum+1);
                 state = states.Starting;
-            } else if(unicornPosition > 1700) {
-                unicornPosition += deltaTime/2;
+            } else if(unicornPosition > window.screen.width * 0.8854166) {
+                unicornPosition += deltaTime/4;
                 unicornHeight = 0;
-            } else if(unicornPosition > 1450) {
-                unicornPosition += deltaTime/10;
-                unicornHeight -= deltaTime/10;
+            } else if(unicornPosition > window.screen.width * 0.75520833) {
+                unicornPosition += deltaTime/4;
+                unicornHeight -= deltaTime/4;
             } else {
-                unicornPosition += deltaTime/10;
-                unicornHeight += deltaTime/10;
+                unicornPosition += deltaTime/4;
+                unicornHeight += deltaTime/4;
             }
         };
         stateHandlers[states.Crashing] = (deltaTime) => {
             state = states.GameOver;
+            
+            // Show unicorn crash animation and stop the normal animation
+            unicorn.style.animation = "crashAnim 1s forwards";
         };
         stateHandlers[states.GameOver] = (deltaTime) => {
         };
@@ -200,6 +202,7 @@ define(["sugar-web/activity/activity"], function (activity) {
             unicorn.style.top = "calc(70% - " + (130+unicornHeight) + "px";
             // Show game over screen iff state is GameOver
             gameOver.hidden = (state !== states.GameOver);
+            
             // Reset clicked 
             clicked = null;
         };
