@@ -14,7 +14,7 @@ define(["sugar-web/activity/activity"], function(activity) {
       let canvas = document.getElementById("actualcanvas");
       canvas.height = canvas.parentElement.clientHeight;
       canvas.width = canvas.parentElement.clientWidth;
-      let ball = new Ball(100, 100, -1, canvas.getContext("2d"), 50);
+      let ball = new Ball(canvas.width / 2, 100, -1, canvas.getContext("2d"), 50);
       let game = new Game(
         canvas.getContext("2d"),
         canvas.width,

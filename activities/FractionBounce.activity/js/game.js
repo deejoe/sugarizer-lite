@@ -47,8 +47,8 @@ class Game {
       if (i > 0) {
         lCtx.lineTo(i * (width / n), height - 1 - (i * this.rampHeight) / n);
       }
-      lCtx.stroke();
       lCtx.closePath();
+      lCtx.stroke();
     }
     lCtx.restore();
   }
@@ -66,7 +66,15 @@ class Game {
     this.ball.render();
   }
 
+  checkCollision() {
+    let rampHeight = this.ctx.height - this.rampHeight * (this.ball.x / this.ctx.width);
+    if(this.ball.y + this.ball.radius >= rampHeight)
+      return true;
+    return false;
+  }
+
   update() {
-    this.ball.update();
+    if(!this.checkCollision())
+      this.ball.update();
   }
 }
