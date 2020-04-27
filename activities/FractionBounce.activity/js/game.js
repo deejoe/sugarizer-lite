@@ -10,6 +10,12 @@ class Game {
     this.ball = inBall;
   }
 
+  resize(inWidth, inHeight) {
+    this.ctx.width = inWidth;
+    this.ctx.height = inHeight;
+    this.render();
+  }
+
   displayRamp(n) {
     let lCtx = this.ctx;
     let width = lCtx.width;

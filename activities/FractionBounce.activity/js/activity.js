@@ -20,23 +20,34 @@ define(["sugar-web/activity/activity"], function(activity) {
         canvas.width,
         canvas.height,
         ball
-      );
+	  );
+	  let hScale = canvas.width / 100;
       window.addEventListener(
         "keydown",
         e => {
           switch (e.keyCode) {
             case 37:
-              ball.x -= 10;
+              ball.x -= hScale;
               break;
             case 39:
-              ball.x += 10;
+              ball.x += hScale;
               break;
             default:
               break;
           }
         },
         false
-      );
+	  );
+	  window.addEventListener(
+		  "resize",
+		  () => {
+			  canvas.height = canvas.parentElement.clientHeight;
+			  canvas.width = canvas.parentElement.clientWidth;
+			  game.resize(canvas.width, canvas.height);
+			  hScale = canvas.width / 100;
+		  },
+		  false
+	  );
       activity.setup();
 
       let fps = 60,
