@@ -13,14 +13,19 @@ define(["sugar-web/activity/activity"], function(activity) {
 
       let canvas = document.getElementById("actualcanvas");
       canvas.height = canvas.parentElement.clientHeight;
-      canvas.width = canvas.parentElement.clientWidth;
-      let ball = new Ball(canvas.width / 2, 100, -1, canvas.getContext("2d"), 50);
+	  canvas.width = canvas.parentElement.clientWidth;
+      let ball = new Ball(canvas.width / 2, 100, -1, canvas.getContext("2d"), 50, undefined);
       let game = new Game(
         canvas.getContext("2d"),
         canvas.width,
         canvas.height,
         ball
 	  );
+	  let img = new Image();
+	  img.onload = function() {
+		game.ball.img = img;
+	  }
+	  img.src = "activity/../images/soccerball.svg";
 	  let hScale = canvas.width / 100;
       window.addEventListener(
         "keydown",

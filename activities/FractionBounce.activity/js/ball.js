@@ -1,10 +1,11 @@
 class Ball {
-  constructor(inX, inY, inGrav, inCtx, inRadius) {
+  constructor(inX, inY, inGrav, inCtx, inRadius, inImg) {
     this.x = inX;
     this.y = inY;
     this.radius = inRadius;
     this.grav = inGrav;
     this.ctx = inCtx;
+    this.img = inImg;
   }
 
   update() {
@@ -12,15 +13,10 @@ class Ball {
   }
 
   render() {
-    this.ctx.save();
-    this.ctx.beginPath();
-    this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-    this.ctx.closePath();
-    this.ctx.fillStyle = "red";
-    this.ctx.fill();
-    this.ctx.lineWidth = 5;
-    this.ctx.strokeStyle = "#003300";
-    this.ctx.stroke();
-    this.ctx.restore();
+    if(this.img != undefined) {
+      this.ctx.save();
+      this.ctx.drawImage(this.img, this.x - this.radius, this.y - this.radius - 20);
+      this.ctx.restore();
+    }
   }
 }
