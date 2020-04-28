@@ -1,15 +1,17 @@
 class Ball {
-  constructor(inX, inY, inGrav, inCtx, inRadius, inImg) {
+  constructor(inX, inY, inGrav, inVel, inCtx, inRadius, inImg) {
     this.x = inX;
     this.y = inY;
     this.radius = inRadius;
     this.grav = inGrav;
+    this.vel = inVel;
     this.ctx = inCtx;
     this.img = inImg;
   }
 
   update() {
-    this.y -= this.grav;
+    this.vel += this.grav;
+    this.y += this.vel;
   }
 
   render() {

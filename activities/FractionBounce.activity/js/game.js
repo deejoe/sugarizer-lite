@@ -99,8 +99,8 @@ class Game {
 
   resetGame() {
     // set the ball back at the starting location
-    this.ball.x = this.ctx.width / 2;
-    this.ball.y = 100;
+    this.ball.vel = -7;
+    this.ball.update();
     // make a new division
     this.selectDivision();
   }
@@ -276,12 +276,9 @@ class Game {
     } else {
       const res = this.evaluateAnswer();
       if (res.won) {
-        console.log("correct");
         // @todo: make a win sound
-        // @todo: add a visual for the wrong answer
       } else {
         // @todo: make a loose sound
-        // @todo: add a visual for the right answer
       }
       if(res.division in this.answers) {
         this.answers[res.division].won.push(res.won);

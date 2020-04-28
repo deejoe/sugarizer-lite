@@ -17,7 +17,8 @@ define(["sugar-web/activity/activity"], function(activity) {
       let ball = new Ball(
         canvas.width / 2,
         100,
-        -1,
+        0.04,
+        0,
         canvas.getContext("2d"),
         50,
         undefined
