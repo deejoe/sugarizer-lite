@@ -72,7 +72,7 @@ const RESULT = {
   }
 }
 RESULT["success"].img.src = "activity/../images/smiley.svg";
-RESULT["failure"].img.src = "activity/../images/smiley.svg";
+RESULT["failure"].img.src = "activity/../images/frown.svg";
 
 class Game {
   constructor(inCtx, inWidth, inHeight, inRampDivisions, inBall) {
