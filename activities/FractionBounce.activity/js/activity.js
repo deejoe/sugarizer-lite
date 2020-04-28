@@ -13,20 +13,28 @@ define(["sugar-web/activity/activity"], function(activity) {
 
       let canvas = document.getElementById("actualcanvas");
       canvas.height = canvas.parentElement.clientHeight;
-	  canvas.width = canvas.parentElement.clientWidth;
-      let ball = new Ball(canvas.width / 2, 100, -1, canvas.getContext("2d"), 50, undefined);
+      canvas.width = canvas.parentElement.clientWidth;
+      let ball = new Ball(
+        canvas.width / 2,
+        100,
+        -1,
+        canvas.getContext("2d"),
+        50,
+        undefined
+      );
       let game = new Game(
         canvas.getContext("2d"),
         canvas.width,
         canvas.height,
+        3,
         ball
-	  );
-	  let img = new Image();
-	  img.onload = function() {
-		game.ball.img = img;
-	  }
-	  img.src = "activity/../images/soccerball.svg";
-	  let hScale = canvas.width / 100;
+      );
+      let img = new Image();
+      img.onload = () => {
+        game.ball.img = img;
+      };
+      img.src = "activity/../images/soccerball.svg";
+      let hScale = canvas.width / 100;
       window.addEventListener(
         "keydown",
         e => {
@@ -42,17 +50,17 @@ define(["sugar-web/activity/activity"], function(activity) {
           }
         },
         false
-	  );
-	  window.addEventListener(
-		  "resize",
-		  () => {
-			  canvas.height = canvas.parentElement.clientHeight;
-			  canvas.width = canvas.parentElement.clientWidth;
-			  game.resize(canvas.width, canvas.height);
-			  hScale = canvas.width / 100;
-		  },
-		  false
-	  );
+      );
+      window.addEventListener(
+        "resize",
+        () => {
+          canvas.height = canvas.parentElement.clientHeight;
+          canvas.width = canvas.parentElement.clientWidth;
+          game.resize(canvas.width, canvas.height);
+          hScale = canvas.width / 100;
+        },
+        false
+      );
       activity.setup();
 
       let fps = 60,
@@ -63,7 +71,10 @@ define(["sugar-web/activity/activity"], function(activity) {
         //Initialize the lag offset
         lag = 0;
 
-      //Start the game loop
+      // pre game loop init
+      game.beginPlay();
+
+      // Start the game loop
       gameLoop();
 
       function gameLoop() {
