@@ -90,6 +90,7 @@ class Game {
     this.lastArray = -1;
     this.widthDivisions = [{}]; // used to later look up in which section is the division
     this.answers = {};
+    this.toolbarText = document.getElementById("toolbar-text");
   }
 
   resize(inWidth, inHeight) {
@@ -131,6 +132,8 @@ class Game {
     let segment = CHALLENGES[selectedArr][selectedSegment];
     this.lastDivision = segment[0];
     this.rampDivisions = segment[1];
+
+    this.toolbarText.innerText = "Bounce the ball to "+this.lastDivision;
 
     // increment the amount of times this item has been seen
     segment[2]++;
@@ -240,9 +243,9 @@ class Game {
     this.ball.render();
 
     this.ctx.save();
-    this.ctx.font = "15px Arial";
+    this.ctx.font = "22px Arial";
     this.ctx.textAlign = "center";
-    this.ctx.fillText(this.lastDivision, this.ball.x - 8, this.ball.y - 48);
+    this.ctx.fillText(this.lastDivision, this.ball.x - 8, this.ball.y - 45);
     this.ctx.font = "30px Arial";
     this.ctx.fillText("0", this.ctx.width / 35, this.ctx.height - 25);
     this.ctx.fillText("1", this.ctx.width - 25, this.ctx.height / 1.09);

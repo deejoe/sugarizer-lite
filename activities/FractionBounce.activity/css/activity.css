@@ -18,6 +18,14 @@
 	background-image: url(../icons/percent.svg);
 }
 
+#toolbar-text {
+	position: absolute;
+	left: 400px;
+	top: -10px;
+	font-size: 25px;
+	color: white;
+}
+
 .fraction-text {
 	width: 40px;
 	height: 25px;
