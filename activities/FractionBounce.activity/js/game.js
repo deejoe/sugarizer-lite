@@ -231,6 +231,9 @@ class Game {
     this.ctx.font = "15px Arial";
     this.ctx.textAlign = "center";
     this.ctx.fillText(this.lastDivision, this.ball.x - 8, this.ball.y - 48);
+    this.ctx.font = "30px Arial";
+    this.ctx.fillText("0", this.ctx.width / 35, this.ctx.height - 25);
+    this.ctx.fillText("1", this.ctx.width - 25, this.ctx.height / 1.09);
     this.ctx.restore();
   }
 
