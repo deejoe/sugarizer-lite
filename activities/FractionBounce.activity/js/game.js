@@ -124,9 +124,6 @@ class Game {
     this.lastDivision = segment[0];
     this.rampDivisions = segment[1];
 
-    // cache the divisions so you can look them up when evaluating if the player hit the right division
-    this.calculateRampWidthDivisions(this.rampDivisions);
-
     // increment the amount of times this item has been seen
     segment[2]++;
   }
@@ -134,20 +131,21 @@ class Game {
   // return a {} with the division + whether it is true (player got it) or false (player missed the target)
   evaluateAnswer() {
     let result = { division: this.lastDivision, won: false };
-    let xPos = this.ball.x;
+    let xPos = this.ball.x / this.ctx.width;
 
-    let numDivision = this.convertDivisionStringToNumber(this.lastDivision);
+    let fraction = this.convertDivisionStringToNumber(this.lastDivision);
 
-    this.widthDivisions.forEach(val => {
-      if (xPos >= val.wStart && xPos <= val.wEnd) {
-        // we've landed in an actual section
-        // but is it the right one?
-        let divSectionNumber = this.convertDivisionStringToNumber(val.division);
-        if (Math.abs(numDivision - divSectionNumber) < 0.1) {
-          result.won = true;
-        }
+    let i;
+    for(i = 0; i <= fraction.n; i++) {
+      if(Math.abs(xPos - i / fraction.n) <= 1/(2*fraction.n) ) {
+        break;
       }
-    });
+    }
+
+    if(i == fraction.a) {
+      result.won = true;
+    }
+
     return result;
   }
 
@@ -156,27 +154,7 @@ class Game {
     let res = myRegexp.exec(divString);
     let grp1 = parseInt(res[1], 10);
     let grp2 = parseInt(res[2], 10);
-    return grp1 / grp2;
-  }
-
-  calculateRampWidthDivisions(n) {
-    let lCtx = this.ctx;
-    let width = lCtx.width;
-
-    this.widthDivisions = [];
-    this.widthDivisions.push({
-      wStart: 0,
-      wEnd: width / n,
-      division: `${1}/${n}`
-    });
-
-    for (let i = 1; i < n; i++) {
-      this.widthDivisions.push({
-        wStart: this.widthDivisions[i - 1].wEnd,
-        wEnd: (i + 1) * (width / n),
-        division: `${i + 1}/${n}`
-      });
-    }
+    return {a: grp1, n: grp2};
   }
 
   displayRamp(n) {
