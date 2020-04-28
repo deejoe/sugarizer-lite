@@ -61,10 +61,18 @@ const CHALLENGES = [
   ]
 ];
 
-const SUCCESS = new Image();
-SUCCESS.src = "activity/../images/smiley.svg";
-const FAIL = new Image();
-FAIL.src = "activity/../images/frown.svg";
+const RESULT = {
+  "success": {
+    img: new Image(),
+    sound: new Audio("activity/../sounds/bottle.ogg")
+  },
+  "failure": {
+    img: new Image(),
+    sound: new Audio("activity/../sounds/crash.ogg")
+  }
+}
+RESULT["success"].img.src = "activity/../images/smiley.svg";
+RESULT["failure"].img.src = "activity/../images/smiley.svg";
 
 class Game {
   constructor(inCtx, inWidth, inHeight, inRampDivisions, inBall) {
@@ -206,7 +214,7 @@ class Game {
     Object.keys(lAnswers).forEach(function(fraction, i) {
       lCtx.fillText(fraction, margin + xOffset * i, margin);
       lAnswers[fraction].won.forEach(function(won, j) {
-        let img = won ? SUCCESS : FAIL;
+        let img = won ? RESULT["success"].img : RESULT["failure"].img;
         lCtx.drawImage(img, margin - 13 + xOffset * i, margin + yOffset * j + 15);
       });
     });
@@ -254,9 +262,9 @@ class Game {
     } else {
       const res = this.evaluateAnswer();
       if (res.won) {
-        // @todo: make a win sound
+        RESULT["success"].sound.play();
       } else {
-        // @todo: make a loose sound
+        RESULT["failure"].sound.play();
       }
       if(res.division in this.answers) {
         this.answers[res.division].won.push(res.won);
