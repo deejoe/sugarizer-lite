@@ -61,6 +61,11 @@ const CHALLENGES = [
   ]
 ];
 
+const SUCCESS = new Image();
+SUCCESS.src = "activity/../images/smiley.svg";
+const FAIL = new Image();
+FAIL.src = "activity/../images/frown.svg";
+
 class Game {
   constructor(inCtx, inWidth, inHeight, inRampDivisions, inBall) {
     this.ctx = inCtx;
@@ -76,6 +81,7 @@ class Game {
     this.lastSegment = -1;
     this.lastArray = -1;
     this.widthDivisions = [{}]; // used to later look up in which section is the division
+    this.answers = {};
   }
 
   resize(inWidth, inHeight) {
@@ -210,6 +216,25 @@ class Game {
     lCtx.restore();
   }
 
+  displayScore() {
+    let margin = 30;
+    let xOffset = 40;
+    let yOffset = 30;
+    let lCtx = this.ctx;
+    let lAnswers = this.answers;
+    lCtx.save();
+    lCtx.font = "15px Arial";
+    lCtx.textAlign = "center";
+    Object.keys(lAnswers).forEach(function(fraction, i) {
+      lCtx.fillText(fraction, margin + xOffset * i, margin);
+      lAnswers[fraction].won.forEach(function(won, j) {
+        let img = won ? SUCCESS : FAIL;
+        lCtx.drawImage(img, margin - 13 + xOffset * i, margin + yOffset * j + 15);
+      });
+    });
+    lCtx.restore();
+  }
+
   // anything that should happen right before the game starts
   beginPlay() {
     this.selectDivision();
@@ -225,6 +250,7 @@ class Game {
     this.ctx.fillRect(0, 0, width, height);
     this.ctx.restore();
     this.displayRamp(this.rampDivisions);
+    this.displayScore();
     this.ball.render();
 
     this.ctx.save();
@@ -256,6 +282,11 @@ class Game {
       } else {
         // @todo: make a loose sound
         // @todo: add a visual for the right answer
+      }
+      if(res.division in this.answers) {
+        this.answers[res.division].won.push(res.won);
+      } else {
+        this.answers[res.division] = {won: [res.won]};
       }
       // regardless of winning or losing -> reset the ball position
       this.resetGame();
