@@ -16,7 +16,7 @@ define(["sugar-web/activity/activity"], function(activity) {
       canvas.width = canvas.parentElement.clientWidth;
       let ball = new Ball(
         canvas.width / 2,
-        100,
+        canvas.height - 76,
         0.04,
         0,
         canvas.getContext("2d"),
@@ -33,6 +33,7 @@ define(["sugar-web/activity/activity"], function(activity) {
       let img = new Image();
       img.onload = () => {
         game.ball.img = img;
+        game.render();
       };
       img.src = "activity/../images/soccerball.svg";
       let hScale = canvas.width / 100;
@@ -65,18 +66,35 @@ define(["sugar-web/activity/activity"], function(activity) {
       activity.setup();
 
       let fps = 60,
-        //Get the start time
-        start = Date.now(),
+        //Get the start time (initialized when ball clicked)
+        start,
         //Set the frame duration in milliseconds
         frameDuration = 1000 / fps,
         //Initialize the lag offset
         lag = 0;
 
-      // pre game loop init
-      game.beginPlay();
-
-      // Start the game loop
-      gameLoop();
+      // the game starts when the ball is pressed
+      let isRunning = false;
+      canvas.addEventListener(
+        "click",
+        e => {
+          if(!isRunning) {
+          let distSq = 
+            Math.pow(e.clientX - ball.x, 2) +
+            Math.pow(e.clientY - ball.y - 66, 2);
+            if(distSq <= Math.pow(img.width / 1.8, 2)) {
+              isRunning = true;
+              // set ball velocity
+              game.ball.vel = -7;
+              // pre game loop init
+              game.beginPlay();
+              // Start the game loop
+              start = Date.now();
+              gameLoop();
+            }
+          }
+        }
+      )
 
       function gameLoop() {
         requestAnimationFrame(gameLoop);
