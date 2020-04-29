@@ -164,6 +164,7 @@ define(["sugar-web/activity/activity"], function (activity) {
         stateHandlers[states.LoadMenu] = (deltaTime) => {}; // No-op
         stateHandlers[states.Starting] = (deltaTime) => {
             unicornPosition = 0;
+            //unicornHeight = 0;
             choices.forEach(x => {
                 x.style.backgroundColor = "";
             })
@@ -188,35 +189,37 @@ define(["sugar-web/activity/activity"], function (activity) {
                 // Highlight incorrectly picked answer
                 choices[clicked].style.backgroundColor = "red";
             }
-            if(unicornPosition > window.innerWidth * 0.625) {
+            if(unicornPosition > window.innerWidth * (1200/1920)) {
                 state = states.Crashing;
             }
         };
         stateHandlers[states.CorrectPending] = (deltaTime) => {
             unicornPosition += deltaTime/2;
-            if(unicornPosition > window.innerWidth * 0.625) {
+            if(unicornPosition > window.innerWidth * (1200/1920)) {
                 state = states.Hurdling;
             }
         };
         stateHandlers[states.IncorrectPending] = (deltaTime) => {
             unicornPosition += deltaTime/2;
-            if(unicornPosition > window.innerWidth * 0.625) {
+            if(unicornPosition > window.innerWidth * (1200/1920)) {
                 state = states.Crashing;
             }
         };
-        stateHandlers[states.Hurdling] = (deltaTime) => {
-
-            if(unicornPosition > window.innerWidth * 0.9375) {
+        stateHandlers[states.Hurdling] = (deltaTime) => {            
+            if(unicornPosition > window.innerWidth * (1800/1920)) {
                 problemNum++;
                 scoreNum.innerText = problemNum;
                 hurdleNum.innerText = (problemNum+1);
                 state = states.Starting;
-            } else if(unicornPosition > window.innerWidth * ‭0.75520833‬) {
-                unicornPosition += deltaTime/5;
-                unicornHeight -= deltaTime/5;
+            } else if(unicornPosition > window.innerWidth * (1700/1920)) {
+                unicornPosition += deltaTime/4;
+                unicornHeight = 0;
+            } else if(unicornPosition > window.innerWidth * (1450/1920)) {
+                unicornPosition += deltaTime/4;
+                unicornHeight -= deltaTime/4;
             } else {
-                unicornPosition += deltaTime/5;
-                unicornHeight += deltaTime/5;
+                unicornPosition += deltaTime/4;
+                unicornHeight += deltaTime/4;
             }
         };
         stateHandlers[states.Crashing] = (deltaTime) => {
