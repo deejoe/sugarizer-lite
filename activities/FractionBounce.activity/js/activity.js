@@ -10,7 +10,7 @@ define(["sugar-web/activity/activity"], function(activity) {
         document.getElementById("settings-button"),
         undefined
       );
-
+      settingspalette.challenges = CHALLENGES;
       let canvas = document.getElementById("actualcanvas");
       canvas.height = canvas.parentElement.clientHeight;
       canvas.width = canvas.parentElement.clientWidth;
@@ -30,6 +30,7 @@ define(["sugar-web/activity/activity"], function(activity) {
         3,
         ball
       );
+      settingspalette.gameRef = game;
       let img = new Image();
       img.onload = () => {
         game.ball.img = img;
@@ -75,26 +76,23 @@ define(["sugar-web/activity/activity"], function(activity) {
 
       // the game starts when the ball is pressed
       let isRunning = false;
-      canvas.addEventListener(
-        "click",
-        e => {
-          if(!isRunning) {
-          let distSq = 
+      canvas.addEventListener("click", e => {
+        if (!isRunning) {
+          let distSq =
             Math.pow(e.clientX - ball.x, 2) +
             Math.pow(e.clientY - ball.y - 66, 2);
-            if(distSq <= Math.pow(img.width / 1.8, 2)) {
-              isRunning = true;
-              // set ball velocity
-              game.ball.vel = -7;
-              // pre game loop init
-              game.beginPlay();
-              // Start the game loop
-              start = Date.now();
-              gameLoop();
-            }
+          if (distSq <= Math.pow(img.width / 1.8, 2)) {
+            isRunning = true;
+            // set ball velocity
+            game.ball.vel = -7;
+            // pre game loop init
+            game.beginPlay();
+            // Start the game loop
+            start = Date.now();
+            gameLoop();
           }
         }
-      )
+      });
 
       function gameLoop() {
         requestAnimationFrame(gameLoop);

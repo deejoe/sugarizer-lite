@@ -1,5 +1,5 @@
 #main-toolbar #activity-button {
-  background-image: url(../activity/activity-icon.svg);
+	background-image: url(../activity/activity-icon.svg);
 }
 
 #main-toolbar #settings-button {
@@ -16,6 +16,10 @@
 
 #main-toolbar #percent-button {
 	background-image: url(../icons/percent.svg);
+}
+
+#selBtn {
+	background-color: black;
 }
 
 #toolbar-text {
@@ -46,6 +50,14 @@
 
 #palette-div {
 	width: 800px;
+	display: flex;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.palette .wrapper {
+	max-width: 800px;
 }
 
 #add-fraction-button {

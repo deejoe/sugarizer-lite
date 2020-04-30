@@ -1,4 +1,4 @@
-const CHALLENGES = [
+let CHALLENGES = [
   [
     ["1/2", 2, 0],
     ["1/3", 3, 0],
@@ -60,17 +60,19 @@ const CHALLENGES = [
     ["15/16", 4, 0]
   ]
 ];
+// 7 sub arrays.
+// can append new entries
 
 const RESULT = {
-  "success": {
+  success: {
     img: new Image(),
     sound: new Audio("activity/../sounds/bottle.ogg")
   },
-  "failure": {
+  failure: {
     img: new Image(),
     sound: new Audio("activity/../sounds/crash.ogg")
   }
-}
+};
 RESULT["success"].img.src = "activity/../images/smiley.svg";
 RESULT["failure"].img.src = "activity/../images/frown.svg";
 
@@ -91,6 +93,9 @@ class Game {
     this.widthDivisions = [{}]; // used to later look up in which section is the division
     this.answers = {};
     this.toolbarText = document.getElementById("toolbar-text");
+
+    this.drawInFractionForm = true;
+    this.drawAsPie = false;
   }
 
   resize(inWidth, inHeight) {
@@ -133,7 +138,7 @@ class Game {
     this.lastDivision = segment[0];
     this.rampDivisions = segment[1];
 
-    this.toolbarText.innerText = "Bounce the ball to "+this.lastDivision;
+    this.toolbarText.innerText = "Bounce the ball to " + this.lastDivision;
 
     // increment the amount of times this item has been seen
     segment[2]++;
@@ -147,13 +152,13 @@ class Game {
     let fraction = this.convertDivisionStringToNumber(this.lastDivision);
 
     let i;
-    for(i = 0; i <= fraction.n; i++) {
-      if(Math.abs(xPos - i / fraction.n) <= 1/(2*fraction.n) ) {
+    for (i = 0; i <= fraction.n; i++) {
+      if (Math.abs(xPos - i / fraction.n) <= 1 / (2 * fraction.n)) {
         break;
       }
     }
 
-    if(i == fraction.a) {
+    if (i == fraction.a) {
       result.won = true;
     }
 
@@ -165,7 +170,7 @@ class Game {
     let res = myRegexp.exec(divString);
     let grp1 = parseInt(res[1], 10);
     let grp2 = parseInt(res[2], 10);
-    return {a: grp1, n: grp2};
+    return { a: grp1, n: grp2 };
   }
 
   displayRamp(n) {
@@ -218,7 +223,11 @@ class Game {
       lCtx.fillText(fraction, margin + xOffset * i, margin);
       lAnswers[fraction].won.forEach(function(won, j) {
         let img = won ? RESULT["success"].img : RESULT["failure"].img;
-        lCtx.drawImage(img, margin - 13 + xOffset * i, margin + yOffset * j + 15);
+        lCtx.drawImage(
+          img,
+          margin - 13 + xOffset * i,
+          margin + yOffset * j + 15
+        );
       });
     });
     lCtx.restore();
@@ -240,12 +249,27 @@ class Game {
     this.ctx.restore();
     this.displayRamp(this.rampDivisions);
     this.displayScore();
-    this.ball.render();
+    let divObj = {};
+    if (this.lastDivision) {
+      divObj = this.convertDivisionStringToNumber(this.lastDivision);
+    }
+    this.ball.render(this.drawAsPie, divObj);
 
     this.ctx.save();
     this.ctx.font = "22px Arial";
     this.ctx.textAlign = "center";
-    this.ctx.fillText(this.lastDivision, this.ball.x - 8, this.ball.y - 45);
+    if (this.drawInFractionForm) {
+      this.ctx.fillText(this.lastDivision, this.ball.x - 8, this.ball.y - 45);
+    } else {
+      let numDiv = this.convertDivisionStringToNumber(this.lastDivision);
+      let finalRes = numDiv.a / numDiv.n;
+      finalRes *= 100;
+      this.ctx.fillText(
+        `${parseInt(finalRes)}%`,
+        this.ball.x - 8,
+        this.ball.y - 45
+      );
+    }
     this.ctx.font = "30px Arial";
     this.ctx.fillText("0", this.ctx.width / 35, this.ctx.height - 25);
     this.ctx.fillText("1", this.ctx.width - 25, this.ctx.height / 1.09);
@@ -269,10 +293,10 @@ class Game {
       } else {
         RESULT["failure"].sound.play();
       }
-      if(res.division in this.answers) {
+      if (res.division in this.answers) {
         this.answers[res.division].won.push(res.won);
       } else {
-        this.answers[res.division] = {won: [res.won]};
+        this.answers[res.division] = { won: [res.won] };
       }
       // regardless of winning or losing -> reset the ball position
       this.resetGame();
