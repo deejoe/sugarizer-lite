@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<title>Math Hurdler</title>
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, viewport-fit=cover"/>
+<link rel="stylesheet" media="not screen and (device-width: 1200px) and (device-height: 900px)"
+	href="lib/sugar-web/graphics/css/sugar-96dpi.css">
+<link rel="stylesheet" media="screen and (device-width: 1200px) and (device-height: 900px)"
+	href="lib/sugar-web/graphics/css/sugar-200dpi.css">
+<link rel="stylesheet" href="css/activity.css">
+<script data-main="js/loader" src="lib/require.js"></script>
+</head>
+
+<body>
+<div id="main-toolbar" class="toolbar">
+  <button class="toolbutton" id="activity-button" title="Math Hurdler"></button>
+
+  <!-- Add more buttons here -->
+
+  <!-- Buttons with class="pull-right" will be right aligned -->
+  <button class="toolbutton pull-right" id="stop-button" title="Stop"></button>
+</div>
+
+<!-- The content of your activity goes inside the canvas -->
+<div id="canvas">
+
+    <!-- Title Screen -->
+    <div id="title">
+        <h1 id="title-text">MATH HURDLER</h1>
+        <button id="title-button">Play</button>
+        <img id="title-uni" src="assets/images/color_unicorn.png" alt="Unicorn">
+    </div>
+    
+    <!-- Game Screen -->
+    <div id="game">
+        <h1 id="game-over" hidden>GAME OVER</h1>
+    
+        <div id="score-container">
+            <p><span id="score-num">0</span> POINTS</p>
+        </div>
+        
+        <div id="problem-container">
+            <p>Hurdle #<span id="hurdle-num">1</span></p>
+            <span id="problem">1/3 + 1</span>
+        </div>
+        
+        <!-- The comments at the end of the buttons here are necessary to
+        remove whitespace between inline-block elements. Please do not 
+        remove them, even if they seem like they aren't serving a purpose. -->
+        <div id="answer-container">
+            <button class="choice" id="choice-1">5/6</button><!--
+            --><button class="choice" id="choice-2">14/15</button>
+            <br>
+            <button class="choice" id="choice-3">1 1/11</button><!--
+            --><button class="choice" id="choice-4">3/15</button>
+        </div>
+        
+        <div id="img-container">
+            <img id="uni" src="assets/images/color_unicorn.png" alt="Unicorn">
+            <img id="hurdle" src="assets/images/hurdle.png" alt="Hurdle">
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>
