@@ -1,4 +1,4 @@
-extends Area2D
+extends CollisionShape2D
 
 
 # Declare member variables here. Examples:
@@ -14,13 +14,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton \
-	and event.button_index == BUTTON_LEFT \
-	and event.is_pressed():
-		self.on_click()
-
-func on_click():
-	print("Click")

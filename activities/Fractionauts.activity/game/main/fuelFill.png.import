@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icnRocket.png-ce6d04cbedd7ffaaa64da17da74cbb77.stex"
+path="res://.import/fuelFill.png-9e95a0e5108677f240aba39f24046b93.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icnRocket.png"
-dest_files=[ "res://.import/icnRocket.png-ce6d04cbedd7ffaaa64da17da74cbb77.stex" ]
+source_file="res://main/fuelFill.png"
+dest_files=[ "res://.import/fuelFill.png-9e95a0e5108677f240aba39f24046b93.stex" ]
 
 [params]
 

@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://start/CollisionShape2DStartBtn.gd" type="Script" id=1]
+[ext_resource path="res://start/StartSceneArea2dCollisionScript.gd" type="Script" id=2]
+[ext_resource path="res://start/title.png" type="Texture" id=3]
+[ext_resource path="res://start/bttnStart.png" type="Texture" id=4]
+[ext_resource path="res://start/background.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 52.6995, 30.6358 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="background" type="Sprite" parent="Area2D"]
+position = Vector2( 400.605, 299.626 )
+texture = ExtResource( 5 )
+
+[node name="title" type="Sprite" parent="Area2D"]
+position = Vector2( 406.288, 108.099 )
+texture = ExtResource( 3 )
+
+[node name="bttnStart" type="Sprite" parent="Area2D"]
+position = Vector2( 627.281, 541.49 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 623.691, 540.205 )
+shape = SubResource( 1 )
+script = ExtResource( 1 )

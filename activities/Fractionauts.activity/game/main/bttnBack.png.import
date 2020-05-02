@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fuelBG.png-c737296cce8b693d80cff073cdc3b7da.stex"
+path="res://.import/bttnBack.png-9f0fedb1521ef4e096fc98e1d0a287f6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fuelBG.png"
-dest_files=[ "res://.import/fuelBG.png-c737296cce8b693d80cff073cdc3b7da.stex" ]
+source_file="res://main/bttnBack.png"
+dest_files=[ "res://.import/bttnBack.png-9f0fedb1521ef4e096fc98e1d0a287f6.stex" ]
 
 [params]
 

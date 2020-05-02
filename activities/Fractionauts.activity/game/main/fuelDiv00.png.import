@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fuelFill.png-3c92573f901277986bcf333371dbf00f.stex"
+path="res://.import/fuelDiv00.png-aff911dd8acea19b95f6f50143be76c4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fuelFill.png"
-dest_files=[ "res://.import/fuelFill.png-3c92573f901277986bcf333371dbf00f.stex" ]
+source_file="res://main/fuelDiv00.png"
+dest_files=[ "res://.import/fuelDiv00.png-aff911dd8acea19b95f6f50143be76c4.stex" ]
 
 [params]
 

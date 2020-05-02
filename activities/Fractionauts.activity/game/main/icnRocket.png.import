@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bttnBack.png-f5b24299214674780664b73ed79914fc.stex"
+path="res://.import/icnRocket.png-e396c10f709324283d857777f01b9de1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bttnBack.png"
-dest_files=[ "res://.import/bttnBack.png-f5b24299214674780664b73ed79914fc.stex" ]
+source_file="res://main/icnRocket.png"
+dest_files=[ "res://.import/icnRocket.png-e396c10f709324283d857777f01b9de1.stex" ]
 
 [params]
 
