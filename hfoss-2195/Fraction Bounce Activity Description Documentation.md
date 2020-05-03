@@ -27,7 +27,7 @@ Correct answers add a check to the background image.
 
 *(summary of the user experience detailed by cja1093 in the “Describe FractionBounce” issue in the repository https://github.com/ritjoe/sugarizer-lite/issues/13 )*
 
-###Based on questions posed by DennisSSDev and answered by cja1093
+### Based on questions posed by DennisSSDev and answered by cja1093
 
 * Fractions are not randomly generated, they are stored as ‘challenges’ within the bounce.py code.  Therefore, there are predetermined fractions for each level of difficulty offered by the game
 * Fractions/percentages are always between 0-1
