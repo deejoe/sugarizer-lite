@@ -41,5 +41,6 @@
 	{"id": "org.sugarlabs.PomodoroActivity", "name": "Pomodoro", "version": 1, "directory": "activities/Pomodoro.activity", "icon": "activity/activity-icon.svg", "favorite": false, "activityId": null},
 	{"id": "org.sugarlabs.Constellation", "name": "Constellation", "version": 1, "directory": "activities/Constellation.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.sugarlabs.Write", "name": "Write", "version": 1, "directory": "activities/Write.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
-	{"id": "org.hfoss.MathHurdler", "name": "Math Hurdler", "version": 1, "directory": "activities/MathHurdler.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null}
+	{"id": "org.hfoss.MathHurdler", "name": "Math Hurdler", "version": 1, "directory": "activities/MathHurdler.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
+	{"id": "org.hfoss.Lemonade", "name": "Lemonade", "version": 1, "directory": "activities/Lemonade.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null}
 ]
