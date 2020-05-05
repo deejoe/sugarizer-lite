@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="fractionouts"
 run/main_scene="res://startScene.tscn"
 
+[display]
+
+window/size/width=800
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

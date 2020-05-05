@@ -51,12 +51,14 @@ texture = ExtResource( 5 )
 offset = Vector2( -18.8629, -6.10352e-05 )
 
 [node name="fuelFill1-2" type="Sprite" parent="Area2D"]
+visible = false
 position = Vector2( 135.417, 324.916 )
 scale = Vector2( 0.78, 0.36 )
 texture = ExtResource( 5 )
 offset = Vector2( -18.8629, -6.10352e-05 )
 
 [node name="fuelFill1-3" type="Sprite" parent="Area2D"]
+visible = false
 position = Vector2( 135.417, 249.915 )
 scale = Vector2( 0.78, 0.36 )
 texture = ExtResource( 5 )
@@ -68,6 +70,7 @@ scale = Vector2( 0.761, 0.55 )
 texture = ExtResource( 5 )
 
 [node name="fuelFill2-2" type="Sprite" parent="Area2D"]
+visible = false
 position = Vector2( 247.279, 268.525 )
 scale = Vector2( 0.761, 0.55 )
 texture = ExtResource( 5 )
@@ -88,6 +91,7 @@ scale = Vector2( 0.767, 0.261794 )
 texture = ExtResource( 5 )
 
 [node name="fuelFill3-4" type="Sprite" parent="Area2D"]
+visible = false
 position = Vector2( 371.103, 239.268 )
 scale = Vector2( 0.767059, 0.268015 )
 texture = ExtResource( 5 )
@@ -183,10 +187,10 @@ __meta__ = {
 
 [node name="frac-2-2" type="Label" parent="Area2D"]
 margin_left = 297.853
-margin_top = 175.101
+margin_top = 175.284
 margin_right = 314.853
-margin_bottom = 199.101
-text = "1"
+margin_bottom = 206.284
+text = "2"
 align = 1
 valign = 1
 __meta__ = {
@@ -195,10 +199,10 @@ __meta__ = {
 
 [node name="frac-3-1" type="Label" parent="Area2D"]
 margin_left = 420.853
-margin_top = 156.101
+margin_top = 153.101
 margin_right = 437.853
-margin_bottom = 180.101
-text = "1"
+margin_bottom = 177.101
+text = "3"
 align = 1
 valign = 1
 __meta__ = {
@@ -207,10 +211,10 @@ __meta__ = {
 
 [node name="frac-3-2" type="Label" parent="Area2D"]
 margin_left = 420.853
-margin_top = 175.101
+margin_top = 175.284
 margin_right = 437.853
-margin_bottom = 199.101
-text = "1"
+margin_bottom = 199.284
+text = "4"
 align = 1
 valign = 1
 __meta__ = {
