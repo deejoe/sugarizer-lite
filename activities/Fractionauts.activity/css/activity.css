@@ -1,3 +1,30 @@
 #main-toolbar #activity-button {
   background-image: url(../activity/activity-icon.svg);
 }
+
+.main {
+  position: relative;
+  width: 100%;
+  background: #fbf6f5;
+  height: calc(100vh - 56px);
+  /* height: calc(100vh - 58px); */
+  border: 0px;
+  overflow: hidden;
+}
+
+.game {
+  padding: 0;
+  margin: auto;
+  display: block;
+  width: 800px;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+canvas {
+  z-index: 1;
+}
