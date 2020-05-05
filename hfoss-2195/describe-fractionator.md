@@ -8,12 +8,13 @@ There is a Sugar Labs wiki page on the activity at <https://wiki.sugarlabs.org/g
 
 ## Running the activity
 See <https://github.com/Fractionators/sugarizer#running-the-project>
->Download this repo (named Sugarizer)
->In your browser (ex. Chrome) go to your extensions
->Turn on developer mode
->Click on the "Load unpacked extension..."
->Choose the main folder of this repo and click OK
->Sugarizer should show up as an extension
+
+>Download this repo (named Sugarizer)<br>
+>In your browser (ex. Chrome) go to your extensions<br>
+>Turn on developer mode<br>
+>Click on the "Load unpacked extension..."<br>
+>Choose the main folder of this repo and click OK<br>
+>Sugarizer should show up as an extension<br>
 >Click to launch Sugarizer
 
 If you're using Chrome, Sugarizer will be available at `chrome://apps/`.
