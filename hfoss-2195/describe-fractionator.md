@@ -1,6 +1,6 @@
 # Describe Fractionator
 
-This issue describes the Fractionator Sugarizer activity.
+This file describes the Fractionator Sugarizer activity.
 The purpose is to teach fraction ordering and equivalence by arranging cards representing fractions in the correct order.
 
 The activity was created for a previous HFOSS class and can be found at <https://github.com/Fractionators/sugarizer>.
